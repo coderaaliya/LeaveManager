@@ -1,0 +1,45 @@
+<div style="text-align: center;">
+<h1>Update Profile</h1>
+
+<%= form_for(@employee, url: employee_path(@employee), method: :patch) do |f| %>
+  
+  
+
+  <%= f.fields_for :user do |u| %>
+    <div>
+      <%= u.label :email %>
+      <%= u.text_field :email, readonly: true  %>
+    </div>
+    <div>
+      <%= u.label :first_name %>
+      <%= u.text_field :first_name %>
+    </div>
+    <div>
+      <%= u.label :last_name %>
+      <%= u.text_field :last_name %>
+    </div>
+    <div>
+      <%= u.label :location %>
+      <%= u.text_field :location %>
+    </div>
+    <div>
+    <%= u.label :Total_leaves_allowed %>
+    <%= u.text_field :Total_leaves_allowed, value: 15, readonly: true %>
+    </div>
+
+  
+
+  <div>
+    <%= f.label :position %>
+    <%= f.text_field :position,  readonly: true  %>
+  </div>
+
+ 
+   
+  <% end %>
+
+  <div>
+    <%= f.submit 'Update Employee' %>
+  </div>
+<% end %>
+</div>

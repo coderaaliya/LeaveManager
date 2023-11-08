@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Leave Rejected</h1>
+  <p>Dear <%= @leafe.user.first_name %> <%= @leafe.user.last_name %>,</p>
+  <p>Your leave request has been rejected. Details:</p>
+  <p>Leave Type: <%= @leafe.leave_type %></p>
+  <p>From: <%= @leafe.from_date %></p>
+  <p><p>To: <%= @leafe.to_date %></p>
+  <!-- Add other details as needed -->
+  <p>Please contact your manager for further details.</p>
+</body>
+</html>

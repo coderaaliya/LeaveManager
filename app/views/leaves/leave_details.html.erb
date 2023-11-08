@@ -1,0 +1,39 @@
+<div class="container text-center">
+  <h2 class="mb-4">Your total leaves are <%= @user.Total_leaves_allowed || 0 %></h2>
+  <% approved_leaves_count = @user.leaves.where(status: Leafe.statuses[:approved]).count %>
+  <h2 class="mb-4">Total Leaves Taken: <%= approved_leaves_count %></h2>
+  
+  <% leaves_left = (@user.Total_leaves_allowed || 0) - approved_leaves_count %>
+  <h2 class="mb-4">Leaves Left: <%= leaves_left >= 0 ? leaves_left : 0 %></h2>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>name</th>
+        <th>Status</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Reason</th>
+        <th>Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% @leaves.each do |leave| %>
+        <tr>
+          <td><%= @user.first_name %></td>
+          <td><%= leave.status %></td>
+          <td><%= leave.from_date&.strftime('%Y-%m-%d') %></td>
+          <td><%= leave.to_date&.strftime('%Y-%m-%d') %></td>
+          <td><%= leave.reason %></td>
+          <td><%= button_to "Destroy", leafe_path(leave), method: :delete, class: "btn btn-success"%></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New leave", new_leafe_path ,class: "btn btn-success" %>

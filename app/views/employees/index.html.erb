@@ -1,0 +1,21 @@
+<div class="text-center">
+
+<% if user_signed_in? %>
+  <h1 class="mt-5">Welcome <%= current_user.first_name %>!</h1>
+<% else %>
+  <!-- Add your content for users who are not signed in -->
+<% end %>
+
+<ul class="list-unstyled mt-3">
+  <% @employees.each do |employee| %>
+    <li>
+      <a href="<%= edit_employee_path(employee) %>">
+        Update Details for Your Employment ID -<%= employee.id %>
+      </a>
+    </li>
+  
+</ul>
+
+  
+<% end %>
+</div>

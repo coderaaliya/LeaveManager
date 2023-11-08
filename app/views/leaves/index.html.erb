@@ -1,0 +1,50 @@
+<p style="color: green"><%= notice %></p>
+<div class="text-center">
+
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Name</th>
+      
+      <th>Status</th>
+      <th>Reason</th>
+      <th>From Date</th>
+      <th>To Date</th>
+      <th>Leave Type</th>
+      <% if current_user.HR? || current_user.manager? || current_user.team_lead? %>
+        <th>Action</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leaves.each do |leafe| %>
+      <tr>
+        <td><%= "#{leafe.user.first_name} #{leafe.user.last_name}" %></td>   
+        <td><%= leafe.status %></td>
+        <td><%= leafe.reason %></td>
+        <td><%= leafe.from_date %></td>
+        <td><%= leafe.to_date %></td>
+        <td><%= leafe.leave_type %></td>
+
+        <% if current_user.HR? || current_user.manager? || current_user.team_lead? %>
+          <td>
+           
+
+            <%= button_to "Approve", approve_leafe_path(leafe), method: :put, class: "btn btn-success" %>
+            <%= button_to "Reject", reject_leafe_path(leafe), method: :put, class: "btn btn-danger" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  
+
+
+
+
+
+  
+

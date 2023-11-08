@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Leave Approved</h1>
+  <p>Dear <%= @leafe.user.first_name %> <%= @leafe.user.last_name %>,</p>
+  <p>Your leave request has been approved. Details:</p>
+  <p>Leave Type: <%= @leafe.leave_type %></p>
+  <p>From: <%= @leafe.from_date %></p>
+  <!-- Add other details as needed -->
+  <p>Thank you!</p>
+</body>
+</html>
